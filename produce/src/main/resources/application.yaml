@@ -3,13 +3,21 @@ eureka:
     service-url:
       defaultZone: http://eureka7001.com:7001/eureka/,http://eureka7002.com:7002/eureka/,http://eureka7003.com:7003/eureka/
   instance:
-    instance-id: spring-cloud-provider-8001 #\u81EA\u5B9A\u4E49\u670D\u52A1\u540D\u79F0\u4FE1\u606F
-    prefer-ip-address: true  #\u663E\u793A\u8BBF\u95EE\u8DEF\u5F84\u7684 ip \u5730\u5740
+    instance-id: spring-cloud-provider-8001
+    prefer-ip-address: true
 server:
   port: 8001
   servlet:
-    context-path: /provider
+    context-path: /
 spring:
   application:
     name: spring-cloud-provider-8001
-
+  datasource:
+    type: com.alibaba.druid.pool.DruidDataSource
+    driver-class-name: com.mysql.cj.jdbc.Driver
+    url: jdbc:mysql://192.168.1.8:3306/springboot
+    username: root
+    password: 5959932
+mybatis:
+  mapper-locations: classpath:mapper/*.xml
+  type-aliases-package: com.example.domain.User
