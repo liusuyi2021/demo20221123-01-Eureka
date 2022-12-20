@@ -8,10 +8,10 @@
         <version>0.0.1-SNAPSHOT</version>
     </parent>
     <groupId>com.example</groupId>
-    <artifactId>produce</artifactId>
+    <artifactId>spring-cloud-provider-8001</artifactId>
     <version>0.0.1-SNAPSHOT</version>
-    <name>produce</name>
-    <description>produce</description>
+    <name>spring-cloud-provider-8001</name>
+    <description>spring-cloud-provider-8001</description>
     <properties>
         <java.version>1.8</java.version>
     </properties>

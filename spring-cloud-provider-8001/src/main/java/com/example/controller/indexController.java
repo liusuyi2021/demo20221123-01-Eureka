@@ -1,39 +1,36 @@
 package com.example.controller;
 
 import com.alibaba.fastjson.JSONObject;
-import com.example.config.Client;
+import com.example.domain.User;
+import com.example.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.cloud.client.ServiceInstance;
 import org.springframework.cloud.client.discovery.DiscoveryClient;
 import org.springframework.web.bind.annotation.*;
-import org.springframework.web.client.RestOperations;
 
-import javax.annotation.Resource;
 import java.util.List;
 
 @RestController
 public class indexController {
-
-    @Resource
-    private Client Spclient; //注入客户端
+    @Autowired
+    private UserService userService;
     @Autowired
     private DiscoveryClient client;
-    @GetMapping("/users")
-    String getUsers() {
-        String map = Spclient.getUsers();
-        return "消费者使用生产者的接口:" + map;
-    }
 
     @GetMapping("/user/{id}")
-    String getUserById(@PathVariable("id") Integer id) {
-        String map = Spclient.getUserById(id);
-        return "消费者使用生产者的接口:" + map;
+    public User getUserBy(@PathVariable("id") Integer id) {
+        return userService.getUserBy(id);
+    }
+
+    @GetMapping("/users")
+    public List<User> getUserList() {
+        return userService.getUserList();
     }
 
     @PostMapping("/user")
-    String addUser(@RequestBody String userJson) {
-        Integer map = Spclient.addUser(userJson);
-        return "消费者使用生产者的接口:" + map;
+    public Integer addUser(@RequestBody String userJson) {
+        User user = JSONObject.parseObject(userJson, User.class);
+        return userService.addUser(user);
     }
 
     @GetMapping("/getInstance")

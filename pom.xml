@@ -5,8 +5,7 @@
     <parent>
         <groupId>org.springframework.boot</groupId>
         <artifactId>spring-boot-starter-parent</artifactId>
-        <version>2.3.7.RELEASE</version>
-        <relativePath/> <!-- lookup parent from repository -->
+        <version>2.3.8.RELEASE</version>
     </parent>
     <groupId>com.example</groupId>
     <artifactId>demo20221123-01-Eureka</artifactId>
@@ -16,7 +15,8 @@
     <description>demo20221123-01-Eureka</description>
     <properties>
         <java.version>1.8</java.version>
-        <spring-cloud.version>Hoxton.SR12</spring-cloud.version>
+        <spring-cloud.version>Hoxton.SR8</spring-cloud.version>
+        <spring-boot.version>2.2.2.RELEASE</spring-boot.version>
         <mysql.version>8.0.28</mysql.version>
         <mybatis.version>2.1.3</mybatis.version>
         <lombok.version>1.14.6</lombok.version>
@@ -25,6 +25,7 @@
         <web.version>2.7.5</web.version>
         <druid.version>1.2.8</druid.version>
         <fastjson.version>1.2.62</fastjson.version>
+        <openfeign.version>2.2.5.RELEASE</openfeign.version>
     </properties>
     <modules>
         <module>micro-service-cloud-eureka-7001</module>
@@ -32,7 +33,8 @@
         <module>micro-service-cloud-eureka-7003</module>
         <module>springcloud-api</module>
         <module>consumer</module>
-        <module>produce</module>
+        <module>spring-cloud-provider-8001</module>
+        <module>spring-cloud-provider-8002</module>
     </modules>
     <dependencyManagement>
         <dependencies>
@@ -48,6 +50,19 @@
                 <groupId>mysql</groupId>
                 <artifactId>mysql-connector-java</artifactId>
                 <version>${mysql.version}</version>
+                <type>pom</type>
+                <scope>import</scope>
+            </dependency>
+            <!-- https://mvnrepository.com/artifact/org.springframework.boot/spring-boot-starter -->
+            <dependency>
+                <groupId>org.springframework.boot</groupId>
+                <artifactId>spring-boot-starter</artifactId>
+                <version>${spring-boot.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>org.springframework.cloud</groupId>
+                <artifactId>spring-cloud-starter-openfeign</artifactId>
+                <version>${openfeign.version}</version>
                 <type>pom</type>
                 <scope>import</scope>
             </dependency>
@@ -70,11 +85,15 @@
                 <groupId>org.springframework.cloud</groupId>
                 <artifactId>spring-cloud-starter-netflix-eureka-server</artifactId>
                 <version>${eureka-server.version}</version>
+                <type>pom</type>
+                <scope>import</scope>
             </dependency>
             <dependency>
                 <groupId>org.springframework.cloud</groupId>
                 <artifactId>spring-cloud-starter-netflix-eureka-client</artifactId>
                 <version>${eureka-client.version}</version>
+                <type>pom</type>
+                <scope>import</scope>
             </dependency>
             <!-- https://mvnrepository.com/artifact/org.projectlombok/lombok -->
             <dependency>

@@ -1,7 +1,7 @@
 server:
   servlet:
     context-path: /
-  port: 8002
+  port: 80
 spring:
   application:
     name: consumer
@@ -9,3 +9,12 @@ eureka:
   client:
     service-url:
       defaultZone: http://eureka7001.com:7001/eureka/,http://eureka7002.com:7002/eureka/,http://eureka7003.com:7003/eureka/
+      #defaultZone: http://eureka7001.com:7001/eureka/
+    register-with-eureka: true #不注册自己
+    fetch-registry: true  #本微服务为服务消费者，需要到服务注册中心搜索服务
+  instance:
+    instance-id: consumer
+    prefer-ip-address: true
+info:
+  name: 我是一个消费者
+  company: 安瑞达科技

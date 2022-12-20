@@ -1,0 +1,32 @@
+eureka:
+  client:
+    service-url:
+      defaultZone: http://eureka7001.com:7001/eureka/,http://eureka7002.com:7002/eureka/,http://eureka7003.com:7003/eureka/
+    register-with-eureka: true
+  instance:
+    instance-id: spring-cloud-provider-8001
+    prefer-ip-address: false
+
+server:
+  port: 8001
+  servlet:
+    context-path: /
+spring:
+  application:
+    name: sp
+  datasource:
+    type: com.alibaba.druid.pool.DruidDataSource
+    driver-class-name: com.mysql.cj.jdbc.Driver
+    url: jdbc:mysql://192.168.1.8:3306/springboot
+    username: root
+    password: 5959932
+mybatis:
+  mapper-locations: classpath:mapper/*.xml
+  type-aliases-package: com.example.domain.User
+
+info:
+  app.name: 这是一个生产者
+  company.name: 安瑞达科技
+ribbon:
+  eureka:
+    enabled: true
