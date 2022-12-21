@@ -10,7 +10,7 @@ eureka:
     service-url:
       defaultZone: http://eureka7001.com:7001/eureka/,http://eureka7002.com:7002/eureka/,http://eureka7003.com:7003/eureka/
       #defaultZone: http://eureka7001.com:7001/eureka/
-    register-with-eureka: true #不注册自己
+    register-with-eureka: false #不注册自己
     fetch-registry: true  #本微服务为服务消费者，需要到服务注册中心搜索服务
   instance:
     instance-id: consumer

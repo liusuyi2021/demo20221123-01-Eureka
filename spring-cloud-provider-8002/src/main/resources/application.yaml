@@ -27,6 +27,3 @@ mybatis:
 info:
   app.name: 这是一个生产者8002
   company.name: 安瑞达科技
-ribbon:
-  eureka:
-    enabled: true
